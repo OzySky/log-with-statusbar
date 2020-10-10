@@ -11,8 +11,7 @@
 const ansi = require("ansi"),
   assert = require("assert"),
   cursor = ansi(process.stdout),
-  { cyan, yellow, red, blue } = require("ansicolor"),
-  getCursorPosition = require("get-cursor-position");
+  { cyan, yellow, red, blue } = require("ansicolor")
 const spinners = Object.assign({}, require("./spinners.json"));
 
 var g_curPos;
@@ -183,13 +182,6 @@ function clearStatusBar() {
       for (let index = 0; index < linesToDelete; index++) {
         cursor.up();
         cursor.eraseLine();
-      }
-    } else if (g_position === "top") {
-      g_curPos = getCursorPosition.sync();
-      cursor.goto(1, 1);
-      for (let index = 0; index < linesToDelete; index++) {
-        cursor.eraseLine();
-        cursor.down();
       }
     }
   }
